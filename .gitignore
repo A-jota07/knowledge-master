@@ -1,0 +1,88 @@
+# ==========================================
+# BACKEND (Node.js)
+# ==========================================
+backend/node_modules/
+backend/.env
+backend/env_file
+backend/npm-debug.log*
+backend/yarn-debug.log*
+backend/yarn-error.log*
+
+# Logs
+backend/logs/
+*.log
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Lockfile opcional (caso prefira ignorar)
+# backend/package-lock.json
+
+# ==========================================
+# FRONTEND (Vue.js)
+# ==========================================
+frontend/node_modules/
+frontend/dist/
+frontend/.env
+frontend/.env.*
+frontend/npm-debug.log*
+frontend/yarn-debug.log*
+frontend/yarn-error.log*
+
+# Lockfile opcional
+# frontend/package-lock.json
+
+# ==========================================
+# BANCO DE DADOS
+# ==========================================
+
+# MongoDB dumps
+*.bson
+*.snappy
+*.lz4
+*.gz
+dump/
+mongod.lock
+
+# PostgreSQL dumps
+*.sql
+*.sql.gz
+*.backup
+*.pgdump
+*.pgdmp
+
+# Credenciais de banco
+*.pem
+
+# ==========================================
+# GERAL
+# ==========================================
+
+# Dependências globais
+node_modules/
+
+# Builds genéricos
+dist/
+build/
+
+# Arquivos de cache
+.cache/
+.temp/
+tmp/
+
+# Sistema
+.DS_Store
+Thumbs.db
+
+# VSCode
+.vscode/
+.idea/
+.history/
+
+# Editor
+*.swp
+*.swo
+
+# Ambiente docker (caso use)
+docker-data/
+docker-compose.override.yml
