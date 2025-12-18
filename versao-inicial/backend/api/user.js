@@ -38,11 +38,10 @@ module.exports = app => {
                 .then(_ => res.status(204).send())
                 .catch(err => res.status(500).send(err))
         } else {
-            app.db('users'
+            app.db('users')
                 .insert(user)
                 .then(_ => res.status(204).send())
                 .catch(err => res.status(500).send(err))
-            )
         }
     }
 
