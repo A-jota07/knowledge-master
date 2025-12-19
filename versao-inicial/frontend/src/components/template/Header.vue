@@ -11,7 +11,7 @@ export default {
 <style>
 .header {
   grid-area: header;
-  background: linear-gradient(to right, #9cecfb, #65c7f7, #0052d4);
+  background: linear-gradient(to right, #373b44, #4286f4);
 
   display: flex;
   justify-content: center;
