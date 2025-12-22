@@ -18,11 +18,15 @@ export default {
   },
   computed: {
     icon() {
-      return "fa-angle-left";
+      return this.$store.state.isMenuVisible
+        ? "fa-angle-right"
+        : "fa-angle-down";
     },
   },
   methods: {
-    toggleMenu() {},
+    toggleMenu() {
+      this.$store.commit("toggleMenu");
+    },
   },
 };
 </script>
