@@ -1,6 +1,10 @@
 <template>
   <div id="app" :class="{ 'hide-menu': !isMenuVisible }">
-    <Header title="Junior - Base de postagens" />
+    <Header
+      title="Junior - Base de postagens"
+      :hideToggle="false"
+      :hideUserDropdown="false"
+    />
     <Menu />
     <Content />
     <Footer />
