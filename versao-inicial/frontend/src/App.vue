@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <Header />
+    <Header title="Junior - Base de postagens" />
     <Menu />
     <Content />
     <Footer />
