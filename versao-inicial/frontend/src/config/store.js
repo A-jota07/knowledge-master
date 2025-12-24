@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import Vuex from 'vuex'
+import axios from 'axios'
 
 Vue.use(Vuex)
 
@@ -7,8 +8,8 @@ export default new Vuex.Store({
     state: {
         isMenuVisible: true,
         user: {
-            name: 'Usuario Mock',
-            email: 'junior@gmail.com'
+            name: 'Administrador',
+            email: 'admin@email.com'
         }
     },
     mutations: {
