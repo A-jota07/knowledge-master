@@ -20,7 +20,7 @@ module.exports = app => {
         const now = Math.floor(Date.now() / 1000)
 
 
-        const playload = {
+        const payload = {
             id: user.id,
             name: user.name,
             email: user.email,
@@ -30,8 +30,8 @@ module.exports = app => {
         }
 
         res.json({
-            ...playload,
-            token: jwt.encode(playload, authSecret)
+            ...payload,
+            token: jwt.encode(payload, authSecret)
         })
     }
 
@@ -40,7 +40,7 @@ module.exports = app => {
         try {
             if (userData) {
                 const token = jwt.decode(userData.token, authSecret)
-                if (new Date(token * 1000) > new Date())
+                if (new Date(token.exp * 1000) > new Date())
                     return res.send(true)
             }
         } catch (e) {
