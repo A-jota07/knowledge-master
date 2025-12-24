@@ -1,5 +1,6 @@
 const bcrypt = require('bcrypt-nodejs')
 
+
 module.exports = app => {
     const { existsOrError, notExistsOrError, equalsOrError } = app.api.validation
 
@@ -12,8 +13,16 @@ module.exports = app => {
         const user = { ...req.body }
         if (req.params.id) user.id = req.params.id
 
-        if (!req.originalUrl.startWith('/users')) user.admin = false
-        if (!req.user || !req.user.admin) user.admin = false
+        // Se for cadastro via /signup, sempre define admin como false
+        if (req.originalUrl === '/signup') {
+            user.admin = false
+        } else if (!req.originalUrl.startsWith('/users')) {
+            user.admin = false
+        } else if (req.user && req.user.admin) {
+            // Mantém admin se o usuário autenticado for admin
+        } else {
+            user.admin = false
+        }
 
         try {
             existsOrError(user.name, 'Nome não informado!')
@@ -23,14 +32,14 @@ module.exports = app => {
             equalsOrError(user.password, user.confirmPassword, 'Sehas não conferem!')
 
             const userFromdB = await app.db('users').where({ email: user.email }).first()
-            if (user.id) {
+            if (!user.id) {
                 notExistsOrError(userFromdB, 'Usuário já cadastrado!')
             }
         } catch (msg) {
             return res.status(400).send(msg)
         }
 
-        user.password = encryptPassword(req.password)
+        user.password = encryptPassword(user.password)
         delete user.confirmPassword
 
         if (user.id) {
