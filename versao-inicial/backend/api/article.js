@@ -14,14 +14,14 @@ module.exports = app => {
             existsOrError(article.userId, 'Autor não informado!')
             existsOrError(article.content, 'Conteúdo não informado!')
         } catch (msg) {
-            res.status(400).send(msg)
+            return res.status(400).send(msg)
         }
 
         if (article.id) {
             app.db('articles')
                 .update(article)
                 .where({ id: article.id })
-                .then(_ => res.status(24).send())
+                .then(_ => res.status(204).send())
                 .catch(err => res.status(500).send(err))
         } else {
             app.db('articles')
