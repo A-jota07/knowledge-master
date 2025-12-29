@@ -6,23 +6,27 @@
       :hideUserDropdown="!user"
     />
     <Menu v-if="user" />
-    <Content />
+    <Loading v-if="validateToken" />
+    <Content v-else />
     <Footer />
   </div>
 </template>
 
 <script>
 import axios from "axios";
+
 import { baseApiUrl, userKey } from "@/global";
 import { mapState } from "vuex";
+
 import Header from "@/components/template/Header.vue";
 import Menu from "@/components/template/Menu.vue";
 import Content from "@/components/template/Content.vue";
 import Footer from "@/components/template/Footer.vue";
+import Loading from "@/components/template/Loading.vue";
 
 export default {
   name: "App",
-  components: { Header, Menu, Content, Footer },
+  components: { Header, Menu, Content, Footer, Loading },
   computed: mapState(["isMenuVisible", "user"]),
   data: function () {
     return {
